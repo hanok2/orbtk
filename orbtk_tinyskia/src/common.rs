@@ -41,7 +41,7 @@ pub fn arc_rect(x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -
     Rectangle::new((start_x, start_y), (end_x - start_x, end_y - start_y))
 }
 
-// Calculates the AABB of a quad bezier curve.
+/// Calculates the AABB of a quad bezier curve.
 pub fn quad_bezier_rect(p0: Point, p1: Point, p2: Point) -> Rectangle {
     let mut mi = p0.min(p2);
     let mut ma = p0.max(p2);
@@ -57,7 +57,7 @@ pub fn quad_bezier_rect(p0: Point, p1: Point, p2: Point) -> Rectangle {
     Rectangle::new(mi, Size::new(ma.x() - mi.x(), ma.y() - mi.y()))
 }
 
-// Calculates the AABB of a cubic bezier curve.
+/// Calculates the AABB of a cubic bezier curve.
 pub fn cubic_bezier_rect(p0: Point, p1: Point, p2: Point, p3: Point) -> Rectangle {
     let mut mi = p0.min(p3);
     let mut ma = p0.max(p3);
@@ -99,7 +99,7 @@ pub fn cubic_bezier_rect(p0: Point, p1: Point, p2: Point, p3: Point) -> Rectangl
 }
 
 /// A object used to keep a record of the AABB of a path.
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Default, Copy, Clone)]
 pub struct PathRect {
     clip_rect: Option<Rectangle>,
     path_rect: Option<Rectangle>,
